@@ -1,5 +1,5 @@
 /* =========================================
-   VISTAAR INTERIORS - LUXURY EDITORIAL EDITION
+   VISTAAR INTERIORS - SAFE LUXURY EDITION
 ========================================= */
 
 * {
@@ -10,7 +10,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 120px; /* FIX 1: Pushes jump-links down so the nav never covers your titles */
+    scroll-padding-top: 120px; 
 }
 
 body {
@@ -109,9 +109,9 @@ nav {
 
 .hero-content {
     max-width: 800px;
-    animation: fadeUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    opacity: 0;
-    transform: translateY(30px);
+    /* INVISIBILITY CLOAK REMOVED HERE */
+    opacity: 1;
+    transform: none;
 }
 
 .hero-content h1 {
@@ -150,7 +150,6 @@ nav {
 
 /* --- CATALOGUE GALLERY --- */
 #catalogue, .catalogue { 
-    /* FIX 2: Forcing Flexbox here guarantees the title is dead-centered no matter what */
     padding: 6rem 5%;
     width: 100%;
     display: flex;
@@ -168,7 +167,6 @@ nav {
 
 .gallery {
     display: grid;
-    /* FIX 3: Caps the image at 380px wide and perfectly centers the grid block */
     grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
     justify-content: center;
     gap: 40px;
@@ -239,25 +237,6 @@ footer h2 {
     letter-spacing: 1px;
 }
 
-/* --- ANIMATIONS --- */
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.fade-in.appear {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* --- PERFECT MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
     nav {
@@ -296,15 +275,4 @@ footer h2 {
     .gallery-item {
         aspect-ratio: 1 / 1 !important; 
     }
-}
-/* --- PREMIUM SCROLL PROGRESS BAR --- */
-.scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background-color: #a67c00; /* Subtle Luxury Gold */
-    z-index: 9999;
-    transition: width 0.1s ease-out;
 }
