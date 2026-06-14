@@ -221,4 +221,10 @@ footer h2 {
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
+
+    /* Fix image stretching and center perfectly on phones */
+    .gallery {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
 }
