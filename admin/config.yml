@@ -1,9 +1,9 @@
 backend:
   name: git-gateway
-  branch: main # This connects to the free hosting we will set up in Phase 3
+  branch: main
 
-media_folder: "images" # Where your uploaded gallery photos and SV logo will be saved
-public_folder: "/images" # The URL path the website will use to find them
+media_folder: "images"
+public_folder: "/images"
 
 collections:
   - name: "homepage"
@@ -20,7 +20,7 @@ collections:
           - {label: "Hero Subtitle Text", name: "heroSubtitle", widget: "text"}
           - {label: "Contact Email", name: "email", widget: "string"}
           - {label: "Contact Phone", name: "phone", widget: "string"}
-          - {label: "Catalogue Gallery", name: "gallery", widget: "list", fields: [
-              {label: "Project Photo", name: "image", widget: "image"},
-              {label: "Project Title", name: "title", widget: "string"}
+          - {label: "Your Catalogues", name: "catalogues", widget: "list", fields: [
+              {label: "Catalogue Name (e.g., Modular Kitchens)", name: "category", widget: "string"},
+              {label: "Upload Catalogue Photos", name: "photos", widget: "list", field: {label: "Photo", name: "image", widget: "image"}}
             ]}
