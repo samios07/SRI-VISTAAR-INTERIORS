@@ -1,8 +1,7 @@
 /* =========================================
-   VISTAAR INTERIORS - MASTER STYLESHEET
+   VISTAAR INTERIORS - LUXURY EDITORIAL EDITION
 ========================================= */
 
-/* Base Reset and Smooth Scrolling */
 * {
     margin: 0;
     padding: 0;
@@ -11,33 +10,34 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 120px; /* FIX 1: Pushes jump-links down so the nav never covers your titles */
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #faf9f6; /* Soft warm white */
-    color: #333;
+    background-color: #faf9f6; 
+    color: #1a1a1a;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, .logo {
     font-family: 'Playfair Display', serif;
 }
 
-/* Navigation - LUXURY UPGRADE */
+/* --- PREMIUM NAVIGATION --- */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 5%; 
-    background-color: rgba(250, 249, 246, 0.98); /* Solid luxury feel */
+    background-color: rgba(250, 249, 246, 0.98);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(12px); /* Stronger frosted glass effect */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04); /* Ultra-thin grounding line */
-    transition: all 0.4s ease;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .logo {
@@ -55,20 +55,20 @@ nav {
     font-size: 0.85rem;
     color: #777;
     margin-left: 15px;
-    letter-spacing: 4px; /* Wide tracking is a hallmark of luxury brands */
+    letter-spacing: 4px;
     text-transform: uppercase;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 3.5rem; /* More breathing room between links */
+    gap: 3.5rem;
 }
 
 .nav-links a {
     text-decoration: none;
     color: #555;
-    font-size: 0.8rem; /* Smaller, sharper text */
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px; 
     position: relative;
@@ -76,5 +76,224 @@ nav {
     transition: color 0.3s ease;
 }
 
-/* The Premium Draw-Line Hover Effect */
 .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    background-color: #a67c00; 
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover {
+    color: #1a1a1a;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* --- EDITORIAL HERO SECTION --- */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    background: radial-gradient(circle at center, #ffffff 0%, #faf9f6 100%); 
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: fadeUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 400;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: #666;
+    max-width: 500px;
+    margin: 0 auto 3rem auto;
+    font-weight: 300;
+}
+
+.btn {
+    display: inline-block;
+    padding: 16px 45px;
+    background-color: transparent;
+    color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    transition: all 0.4s ease;
+}
+
+.btn:hover {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* --- CATALOGUE GALLERY --- */
+#catalogue, .catalogue { 
+    /* FIX 2: Forcing Flexbox here guarantees the title is dead-centered no matter what */
+    padding: 6rem 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#catalogue h2, .catalogue h2 {
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+    text-align: center;
+    width: 100%;
+}
+
+.gallery {
+    display: grid;
+    /* FIX 3: Caps the image at 380px wide and perfectly centers the grid block */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08); 
+    aspect-ratio: 4 / 3; 
+    border-radius: 8px; 
+    width: 100%;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06); 
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 40px 20px 20px;
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 5rem 5%;
+    width: 100%;
+}
+
+footer h2 {
+    font-weight: 400;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.copyright {
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- PERFECT MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column !important;
+        padding: 20px 10px !important;
+    }
+
+    .logo {
+        margin-bottom: 15px !important;
+    }
+
+    .nav-links {
+        gap: 15px !important;
+    }
+
+    .nav-links a {
+        font-size: 0.75rem !important;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem !important;
+        margin-top: 60px !important; 
+    }
+
+    .hero-content p {
+        font-size: 1rem !important;
+        padding: 0 15px !important;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr !important;
+        gap: 25px !important;
+        padding: 0 15px !important;
+    }
+    
+    .gallery-item {
+        aspect-ratio: 1 / 1 !important; 
+    }
+}
