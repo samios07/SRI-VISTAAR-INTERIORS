@@ -1,10 +1,10 @@
 // ==========================================
-// VISTAAR INTERIORS - MASTER JAVASCRIPT
+// VISTAAR INTERIORS - SAFE LUXURY FRAME ONLY
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. INJECT PREMIUM 3-SIDED SCROLL FRAME
+    // 1. INJECT 3-SIDED GOLD FRAME (No hiding required)
     const topBar = document.createElement('div');
     const leftBar = document.createElement('div');
     const rightBar = document.createElement('div');
@@ -26,35 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (scrollPercentage > 100) scrollPercentage = 100;
         
-        // Push the gold frame around the edges
         topBar.style.width = scrollPercentage + '%';
         leftBar.style.height = scrollPercentage + '%';
         rightBar.style.height = scrollPercentage + '%';
     });
 
-    // 2. BI-DIRECTIONAL LUXURY REVEAL ENGINE
-    const observerOptions = { 
-        threshold: 0.1, 
-        rootMargin: "0px 0px -50px 0px" 
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('appear');
-            } else {
-                entry.target.classList.remove('appear'); 
-            }
-        });
-    }, observerOptions);
-
-    // 3. AUTO-ANIMATE ALL CONTENT (Without touching your HTML!)
-    // This looks for your text and your images and applies the fade-in effect safely
-    const elementsToAnimate = document.querySelectorAll('.hero-content, #catalogue h2, .catalogue h2, .gallery-item');
-    
-    elementsToAnimate.forEach(el => {
-        el.classList.add('fade-in'); 
-        appearOnScroll.observe(el); 
+    // 2. THE FAILSAFE (Forces everything to become visible immediately)
+    const hiddenElements = document.querySelectorAll('.fade-in, .hero-content, .gallery-item');
+    hiddenElements.forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.animation = 'none';
     });
-
 });
