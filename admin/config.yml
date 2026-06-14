@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main # This connects to the free hosting we will set up in Phase 3
+
+media_folder: "images" # Where your uploaded gallery photos and SV logo will be saved
+public_folder: "/images" # The URL path the website will use to find them
+
+collections:
+  - name: "homepage"
+    label: "Edit Website Content"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content.json"
+        label: "Homepage Text and Images"
+        name: "index"
+        fields:
+          - {label: "Main Hero Headline", name: "heroTitle", widget: "string"}
+          - {label: "Hero Subtitle Text", name: "heroSubtitle", widget: "text"}
+          - {label: "Contact Email", name: "email", widget: "string"}
+          - {label: "Contact Phone", name: "phone", widget: "string"}
+          - {label: "Catalogue Gallery", name: "gallery", widget: "list", fields: [
+              {label: "Project Photo", name: "image", widget: "image"},
+              {label: "Project Title", name: "title", widget: "string"}
+            ]}
